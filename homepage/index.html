@@ -1,0 +1,236 @@
+<html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>newtab</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      /*
+        Firefox cannot expose exact theme colors to normal web pages.
+        These system colors usually follow your browser/GTK dark theme.
+        Override the fallbacks below if you want a tighter match.
+      */
+      --bg: #282433;
+      --fg: #eeeeee;
+      --muted: color-mix(in srgb, CanvasText 54%, Canvas 46%);
+      --faint: color-mix(in srgb, CanvasText 18%, Canvas 82%);
+      --line: color-mix(in srgb, CanvasText 14%, Canvas 86%);
+      --accent: LinkText;
+
+      --fallback-bg: #0b0d10;
+      --fallback-fg: #c8cdd2;
+      --fallback-muted: #6f7882;
+      --fallback-line: #20242a;
+      --fallback-accent: #9aa7b2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+      background: var(--bg, var(--fallback-bg));
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: var(--bg, var(--fallback-bg));
+      color: var(--fg, var(--fallback-fg));
+      font: 15px/1.45 Iosevka, monospace;
+      letter-spacing: 0.01em;
+    }
+
+    main {
+      width: min(640px, calc(100vw - 48px));
+      display: grid;
+      gap: 28px;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line, var(--fallback-line));
+      padding-bottom: 12px;
+    }
+
+    .label {
+      color: var(--muted, var(--fallback-muted));
+    }
+
+    #clock {
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--line, var(--fallback-line));
+      padding-bottom: 10px;
+    }
+
+    form span {
+      color: var(--muted, var(--fallback-muted));
+      user-select: none;
+    }
+
+    input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--fg, var(--fallback-fg));
+      font: inherit;
+      caret-color: var(--accent, var(--fallback-accent));
+    }
+
+    input::placeholder {
+      color: var(--muted, var(--fallback-muted));
+      opacity: 1;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line, var(--fallback-line));
+      border: 1px solid var(--line, var(--fallback-line));
+    }
+
+    a {
+      display: block;
+      padding: 14px 16px;
+      background: var(--bg, var(--fallback-bg));
+      color: var(--fg, var(--fallback-fg));
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--accent, var(--fallback-accent));
+      outline: 1px solid var(--accent, var(--fallback-accent));
+      outline-offset: -1px;
+    }
+
+    kbd {
+      color: var(--muted, var(--fallback-muted));
+      font: inherit;
+      float: right;
+    }
+
+    footer {
+      color: var(--muted, var(--fallback-muted));
+      font-size: 13px;
+      border-top: 1px solid var(--line, var(--fallback-line));
+      padding-top: 12px;
+    }
+
+    @media (max-width: 520px) {
+      nav {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        display: grid;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <div>
+        <div class="label">void</div>
+        <div>luca@ragnar</div>
+      </div>
+
+      <time id="clock" aria-label="current time">00:00</time>
+    </header>
+
+    <form id="search" autocomplete="off">
+      <span>search</span>
+      <input
+        id="query"
+        name="q"
+        type="search"
+        placeholder="duckduckgo"
+        spellcheck="false"
+        autofocus
+      >
+    </form>
+
+    <nav aria-label="quick links">
+      <a href="https://youtube.com">youtube <kbd>y</kbd></a>
+      <a href="https://github.com">github <kbd>g</kbd></a>
+      <a href="https://github.com/cococry">cococry <kbd>c</kbd></a>
+    </nav>
+
+    <footer>
+      an idiot admires complexity, a genius admires simplicity.
+    </footer>
+  </main>
+
+  <script>
+    const clock = document.getElementById("clock");
+    const input = document.getElementById("query");
+    const form = document.getElementById("search");
+
+    const links = {
+      y: "https://youtube.com",
+      g: "https://github.com",
+      c: "https://github.com/cococry"
+    };
+
+    function tick() {
+      const now = new Date();
+      clock.textContent = now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      });
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const q = input.value.trim();
+      if (!q) return;
+
+      location.href = "https://duckduckgo.com/?q=" + encodeURIComponent(q);
+    });
+
+    window.addEventListener("keydown", event => {
+      const typing = document.activeElement === input;
+
+      if (event.key === "/" && !typing) {
+        event.preventDefault();
+        input.focus();
+        return;
+      }
+
+      if (!typing && links[event.key]) {
+        location.href = links[event.key];
+      }
+    });
+  </script>
+</body>
+</html>

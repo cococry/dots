@@ -1,0 +1,26 @@
+@-moz-document url-prefix("http://"), url-prefix("https://") {
+  *,
+  *::before,
+  *::after {
+    font-family:
+      "Iosevka Nerd Font",
+      "Iosevka Nerd Font Mono",
+      monospace,
+      sans-serif !important;
+
+    border-radius: 0 !important;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font-family:
+      "Iosevka Nerd Font",
+      "Iosevka Nerd Font Mono",
+      monospace,
+      sans-serif !important;
+
+    border-radius: 0 !important;
+  }
+}

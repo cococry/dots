@@ -1,0 +1,73 @@
+# Set Zsh as the default shell
+[terminal.shell]
+program = "/usr/bin/zsh"
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/kanagawa_dragon.toml"
+]
+
+# Font configuration
+[font]
+normal = { family = "Iosevka Nerd Font", style = "Regular" }
+bold = { family = "Iosevka Nerd Font", style = "Bold" }
+italic = { family = "Iosevka Nerd Font", style = "Bold Italic" }
+bold_italic = { family = "Iosevka Nerd Font", style = "Bold Italic" }
+size = 14
+
+# Window padding
+[window]
+padding = { x = 10, y = 10 }
+
+[colors.primary]
+background = "#282433"
+foreground = "#eee9fc"
+
+[colors.cursor]
+text = "#eee9fc"
+cursor = "#eee9fc"
+
+[colors.vi_mode_cursor]
+text = "#eee9fc"
+cursor = "#eee9fc"
+
+[colors.selection]
+text = "CellForeground"
+background = "#3f3951"
+
+[colors.search.matches]
+foreground = "CellBackground"
+background = "#b1baf4"
+
+[colors.footer_bar]
+background = "#3f3951"
+foreground = "#eee9fc"
+
+[colors.normal]
+black = "#282433"
+red = "#e965a5"
+green = "#b1f2a7"
+yellow = "#ebde76"
+blue = "#b1baf4"
+magenta = "#e192ef"
+cyan = "#b3f4f3"
+white = "#eee9fc"
+
+[colors.bright]
+black = "#3f3951"
+red = "#e965a5"
+green = "#b1f2a7"
+yellow = "#ebde76"
+blue = "#b1baf4"
+magenta = "#e192ef"
+cyan = "#b3f4f3"
+white = "#eee9fc"
+
+[colors.dim]
+black = "#201d29"
+red = "#ba5a87"
+green = "#8ec286"
+yellow = "#bcb260"
+blue = "#8e95c3"
+magenta = "#b474bf"
+cyan = "#8fc3c2"
+white = "#beb9ca"

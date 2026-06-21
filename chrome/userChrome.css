@@ -1,0 +1,238 @@
+* {
+  font-family:
+    "Iosevka Nerd Font",
+    "Iosevka Nerd Font Mono",
+    monospace !important;
+
+  border-radius: 0 !important;
+}
+
+/* userChrome.css — HardHacker Firefox theme */
+
+:root {
+  --hh-bg: #282433;
+  --hh-bg-alt: #3f3951;
+  --hh-fg: #eee9fc;
+  --hh-muted: #beb9ca;
+
+  --hh-red: #e965a5;
+  --hh-green: #b1f2a7;
+  --hh-yellow: #ebde76;
+  --hh-blue: #b1baf4;
+  --hh-magenta: #e192ef;
+  --hh-cyan: #b3f4f3;
+}
+
+/* Main browser chrome */
+#navigator-toolbox,
+#TabsToolbar,
+#nav-bar,
+#PersonalToolbar {
+  background: var(--hh-bg) !important;
+  color: var(--hh-fg) !important;
+  border-color: var(--hh-bg-alt) !important;
+}
+
+/* Tabs */
+.tabbrowser-tab .tab-background {
+  background: transparent !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: var(--hh-bg-alt) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--hh-fg) !important;
+}
+
+.tabbrowser-tab:not([selected="true"]) .tab-label {
+  color: var(--hh-muted) !important;
+}
+
+.tabbrowser-tab:hover .tab-background {
+  background: color-mix(in srgb, var(--hh-bg-alt) 75%, var(--hh-blue)) !important;
+}
+
+/* URL/search bar */
+#urlbar-background,
+#searchbar {
+  background: var(--hh-bg-alt) !important;
+  border: 1px solid var(--hh-blue) !important;
+  box-shadow: none !important;
+}
+
+#urlbar-input,
+#searchbar input {
+  color: var(--hh-fg) !important;
+}
+
+#urlbar-input::placeholder,
+#searchbar input::placeholder {
+  color: var(--hh-muted) !important;
+}
+
+/* URL bar dropdown */
+#urlbar-results,
+.urlbarView {
+  background: var(--hh-bg) !important;
+  color: var(--hh-fg) !important;
+  border: 1px solid var(--hh-bg-alt) !important;
+}
+
+.urlbarView-row[selected],
+.urlbarView-row:hover {
+  background: var(--hh-bg-alt) !important;
+}
+
+.urlbarView-title {
+  color: var(--hh-fg) !important;
+}
+
+.urlbarView-url {
+  color: var(--hh-cyan) !important;
+}
+
+/* Toolbar buttons */
+.toolbarbutton-1,
+.toolbarbutton-icon,
+.urlbar-icon,
+#identity-icon {
+  color: var(--hh-fg) !important;
+  fill: var(--hh-fg) !important;
+}
+
+.toolbarbutton-1:hover,
+.toolbarbutton-1[open="true"] {
+  background: var(--hh-bg-alt) !important;
+}
+
+/* Bookmarks toolbar */
+.bookmark-item {
+  color: var(--hh-fg) !important;
+}
+
+.bookmark-item:hover {
+  background: var(--hh-bg-alt) !important;
+}
+
+/* Menus and popups */
+menupopup,
+panel,
+panelview,
+.popup-internal-box {
+  --panel-background: var(--hh-bg) !important;
+  --panel-color: var(--hh-fg) !important;
+  --panel-border-color: var(--hh-bg-alt) !important;
+
+  background: var(--hh-bg) !important;
+  color: var(--hh-fg) !important;
+  border-color: var(--hh-bg-alt) !important;
+}
+
+menu,
+menuitem,
+toolbarbutton {
+  color: var(--hh-fg) !important;
+}
+
+menu:hover,
+menuitem:hover,
+toolbarbutton:hover {
+  background: var(--hh-bg-alt) !important;
+}
+
+/* Sidebar */
+#sidebar-box,
+#sidebar-header,
+.sidebar-panel {
+  background: var(--hh-bg) !important;
+  color: var(--hh-fg) !important;
+  border-color: var(--hh-bg-alt) !important;
+}
+
+/* Find bar */
+findbar {
+  background: var(--hh-bg) !important;
+  color: var(--hh-fg) !important;
+  border-top: 1px solid var(--hh-bg-alt) !important;
+}
+
+findbar textbox {
+  background: var(--hh-bg-alt) !important;
+  color: var(--hh-fg) !important;
+  border: 1px solid var(--hh-blue) !important;
+}
+
+/* Status / download panels */
+#statuspanel-label,
+.downloadMainArea,
+.downloadsPanelFooter {
+  background: var(--hh-bg-alt) !important;
+  color: var(--hh-fg) !important;
+}
+
+/* Accent states */
+#identity-box.verifiedDomain #identity-icon {
+  fill: var(--hh-green) !important;
+}
+
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--hh-magenta) !important;
+}
+
+.tab-close-button:hover {
+  background: var(--hh-red) !important;
+  fill: var(--hh-bg) !important;
+}
+
+/* Firefox URL/search bar color */
+#urlbar-background,
+.urlbar-background,
+#searchbar,
+.searchbar-background {
+  background: #282433 !important;
+  background-color: #282433 !important;
+  border-color: #282433 !important;
+  box-shadow: none !important;
+}
+
+/* URL/search text color */
+#urlbar,
+#urlbar-input,
+#searchbar,
+.searchbar-textbox {
+  color: #ffffff !important;
+}
+
+/* Remove secure/connection icons in the address bar */
+#tracking-protection-icon-container,
+#identity-icon-box,
+#identity-permission-box,
+#identity-box {
+  display: none !important;
+}
+
+/* Remove bookmark star icon in the address bar */
+#star-button-box,
+#star-button {
+  display: none !important;
+}
+
+/* Remove Firefox account icon on the right */
+#fxa-toolbar-menu-button {
+  display: none !important;
+}
+
+/* Remove unified extensions icon */
+#unified-extensions-button {
+  display: none !important;
+}
+
+/* Remove all individual extension toolbar icons */
+#nav-bar .webextension-browser-action,
+#TabsToolbar .webextension-browser-action,
+toolbarbutton.webextension-browser-action {
+  display: none !important;
+}
