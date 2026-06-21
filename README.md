@@ -38,5 +38,5 @@ firefox
 ## Screenshots
 
 <p align="left">
-  <img src="https://github.com/cococry/firefox/blob/main/firefox.png">alt="firefox screenshot">
+  <img src="https://github.com/cococry/firefox/blob/main/firefox.png"alt="firefox screenshot">
 </p>
