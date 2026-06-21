@@ -11,7 +11,7 @@ A coherent theme - based on dark-blue/purple - is used for both browser UI and h
 ```console
 git clone https://github.com/cococry/firefox
 cd firefox
-mkdir -p .config/firefox-custom
+mkdir -p ~/.config/firefox-custom
 cp homepage/index.html ~/.config/firefox-custom
 ```
 
