@@ -10,17 +10,17 @@
 /* userChrome.css — HardHacker Firefox theme */
 
 :root {
-  --hh-bg: #282433;
-  --hh-bg-alt: #3f3951;
-  --hh-fg: #eee9fc;
-  --hh-muted: #beb9ca;
+  --hh-bg: #000000;
+  --hh-bg-alt: #202020;
+  --hh-fg: #d8d8d8;
+  --hh-muted: #707070;
 
-  --hh-red: #e965a5;
-  --hh-green: #b1f2a7;
-  --hh-yellow: #ebde76;
-  --hh-blue: #b1baf4;
-  --hh-magenta: #e192ef;
-  --hh-cyan: #b3f4f3;
+  --hh-red: #909090;
+  --hh-green: #b8b8b8;
+  --hh-yellow: #c6c6c6;
+  --hh-blue: #9a9a9a;
+  --hh-magenta: #ababab;
+  --hh-cyan: #b8b8b8;
 }
 
 /* Main browser chrome */
@@ -192,9 +192,9 @@ findbar textbox {
 .urlbar-background,
 #searchbar,
 .searchbar-background {
-  background: #282433 !important;
-  background-color: #282433 !important;
-  border-color: #282433 !important;
+  background: #000000 !important;
+  background-color: #000000 !important;
+  border-color: #202020 !important;
   box-shadow: none !important;
 }
 
@@ -203,7 +203,7 @@ findbar textbox {
 #urlbar-input,
 #searchbar,
 .searchbar-textbox {
-  color: #ffffff !important;
+  color: #d8d8d8 !important;
 }
 
 /* Remove secure/connection icons in the address bar */
@@ -236,3 +236,4 @@ findbar textbox {
 toolbarbutton.webextension-browser-action {
   display: none !important;
 }
+

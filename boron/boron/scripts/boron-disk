@@ -1,0 +1,12 @@
+#!/bin/bash
+# Get disk usage percentage for /home
+disk=$(df -P /home | awk 'NR==2 {print $5}' | tr -d '%')
+
+# If disk usage could not be detected, default to 0
+if [ -z "$disk" ]; then
+    disk=0
+fi
+
+# Display the icon with the disk percentage
+icon="󰋊"
+echo "$icon $disk%"

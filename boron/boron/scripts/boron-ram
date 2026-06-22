@@ -1,0 +1,16 @@
+#!/bin/bash
+# Get memory information from /proc/meminfo
+mem_total=$(grep -E '^MemTotal:' /proc/meminfo | awk '{print $2}')
+mem_available=$(grep -E '^MemAvailable:' /proc/meminfo | awk '{print $2}')
+
+# If memory information could not be detected, default to 0
+if [ -z "$mem_total" ] || [ -z "$mem_available" ]; then
+    ram=0
+else
+    mem_used=$((mem_total - mem_available))
+    ram=$((100 * mem_used / mem_total))
+fi
+
+# Display the icon with the RAM percentage
+icon="󰘚"
+echo "$icon $ram%"

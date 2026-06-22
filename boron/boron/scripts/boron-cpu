@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Get CPU usage instantly by comparing current /proc/stat with a cached previous reading
+
+cache_file="/tmp/cpu_usage_prev"
+
+read -r _ user nice system idle iowait irq softirq steal _ < /proc/stat
+
+idle_now=$((idle + iowait))
+total_now=$((user + nice + system + idle + iowait + irq + softirq + steal))
+
+# If no previous reading exists, create one and return 0
+if [ ! -f "$cache_file" ]; then
+    echo "$idle_now $total_now" > "$cache_file"
+    cpu=0
+else
+    read -r prev_idle prev_total < "$cache_file"
+
+    total_diff=$((total_now - prev_total))
+    idle_diff=$((idle_now - prev_idle))
+
+    if [ "$total_diff" -eq 0 ]; then
+        cpu=0
+    else
+        cpu=$((100 * (total_diff - idle_diff) / total_diff))
+    fi
+
+    echo "$idle_now $total_now" > "$cache_file"
+fi
+
+# Display the icon with the CPU percentage
+icon="󰻠"
+echo "$icon $cpu%"
